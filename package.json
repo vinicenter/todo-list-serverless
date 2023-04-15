@@ -1,14 +1,17 @@
 {
-  "name": "networkdata",
+  "name": "todoListServerless",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vue-tsc && vite build",
-    "preview": "vite preview"
+    "frontend:dev": "vite",
+    "frontend:build": "vue-tsc && vite build",
+    "frontend:preview": "vite preview",
+    "backend:dev": "wrangler pages dev ./"
   },
   "dependencies": {
+    "mongo-http": "^0.0.19",
+    "mongoose": "^7.0.3",
     "vue": "^3.2.47",
     "wrangler": "^2.15.1"
   },
