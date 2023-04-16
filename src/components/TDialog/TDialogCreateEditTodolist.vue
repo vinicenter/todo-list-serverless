@@ -106,7 +106,7 @@ const submitTodolist = async () => {
           Close
         </VBtn>
         <VBtn color="green" @click="submitTodolist">
-          Create
+          {{ props.id ? 'Edit' : 'Create' }}
         </VBtn>
       </VCardActions>
     </VCard>
