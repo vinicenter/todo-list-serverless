@@ -1,12 +1,18 @@
 export namespace todolistsAPI {
   export interface TodolistType {
-    _id: string;
+    _id?: string;
     title: string;
     description: string;
   }
 
-  export interface TodolistResponseType {
+  export interface TodolistsResponseType {
     documents: TodolistType[];
+    error: boolean,
+    isSuccess: boolean,
+  }
+
+  export interface TodolistResponseType {
+    document: TodolistType;
     error: boolean,
     isSuccess: boolean,
   }
@@ -14,13 +20,19 @@ export namespace todolistsAPI {
 
 export namespace todolistsMappedAPI {
   export interface TodolistType {
-    id: string;
+    id?: string;
     title: string;
     description: string;
   }
 
-  export interface TodolistResponseType {
+  export interface TodolistsResponseType {
     documents: TodolistType[];
+    error: boolean,
+    isSuccess: boolean,
+  }
+
+  export interface TodolistResponseType {
+    document: TodolistType;
     error: boolean,
     isSuccess: boolean,
   }

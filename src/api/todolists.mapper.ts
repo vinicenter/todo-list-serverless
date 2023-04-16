@@ -1,6 +1,6 @@
 import { todolistsAPI, todolistsMappedAPI } from './todolists.types';
 
-export const todolistsMapperFromApi = (response: todolistsAPI.TodolistResponseType): todolistsMappedAPI.TodolistResponseType => {
+export const todolistsMapperFromApi = (response: todolistsAPI.TodolistsResponseType): todolistsMappedAPI.TodolistsResponseType => {
   return {
     documents: response.documents.map((document) => ({
       id: document._id,
@@ -12,18 +12,22 @@ export const todolistsMapperFromApi = (response: todolistsAPI.TodolistResponseTy
   }
 }
 
-export const todolistMapperDocumentToApi = (document: todolistsMappedAPI.TodolistType): todolistsAPI.TodolistType => {
+export const todolistMapperFromApi = (response: todolistsAPI.TodolistResponseType): todolistsMappedAPI.TodolistResponseType => {
   return {
-    _id: document.id,
-    title: document.title,
-    description: document.description,
+    document: {
+      id: response.document._id,
+      title: response.document.title,
+      description: response.document.description,
+    },
+    error: response.error,
+    isSuccess: response.isSuccess,
   }
 }
 
-export const todolistMapperDocumentFromApi = (document: todolistsAPI.TodolistType): todolistsMappedAPI.TodolistType => {
+export const todolistMapperToApi = (todolist: todolistsMappedAPI.TodolistType): todolistsAPI.TodolistType => {
   return {
-    id: document._id,
-    title: document.title,
-    description: document.description,
+    _id: todolist.id,
+    title: todolist.title,
+    description: todolist.description,
   }
 }

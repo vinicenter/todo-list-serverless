@@ -4,6 +4,7 @@ import TCard from "./components/TCard/TCard.vue";
 import TDialogDelete from "./components/TDialog/TDialogDelete.vue";
 import { getTodolists } from "./api/todolists";
 import { useQuery } from '@tanstack/vue-query'
+import TDialogCreateEdit from "./components/TDialog/TDialogCreateEdit.vue";
 
 const { data, isLoading, refetch } = useQuery({
   queryKey: ['todolists'],
@@ -31,6 +32,7 @@ const runAction = async (action: actionsTypes, id?: string) => {
 <template>
   <VApp>
     <VMain>
+      <VBtn @click="runAction('create')" color="primary" class="fixed bottom-4 right-4">Create</VBtn>
       <VContainer class="py-8 px-6" fluid>
         <VRow v-if="!isLoading">
           <VCol v-for="{ title, description, id } in data?.documents" cols="12" md="6" lg="3">
@@ -47,5 +49,6 @@ const runAction = async (action: actionsTypes, id?: string) => {
     </VMain>
 
     <TDialogDelete :id="itemIdSelect" v-model="deleteModalState" @success="refetch" />
+    <TDialogCreateEdit :id="itemIdSelect" v-model="editCreateModalState" @success="refetch" />
   </VApp>
 </template>
