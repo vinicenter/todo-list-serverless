@@ -1,5 +1,5 @@
 import "@mdi/font/css/materialdesignicons.css";
-
+import { VueQueryPlugin } from "@tanstack/vue-query";
 import { createApp } from "vue";
 import App from "./App.vue";
 
@@ -24,4 +24,7 @@ const vuetify = createVuetify({
 
 const app = createApp(App);
 
-app.use(vuetify).mount("#app");
+app
+  .use(vuetify)
+  .use(VueQueryPlugin)
+  .mount("#app");

@@ -1,9 +1,9 @@
 <script setup lang="ts">
-defineProps<{ id: number }>();
+defineProps<{ id: string }>();
 
 const emit = defineEmits<{
-  (event: "edit", id: number): void;
-  (event: "delete", id: number): void;
+  (event: "edit", id: string): void;
+  (event: "delete", id: string): void;
 }>();
 </script>
 
@@ -12,21 +12,10 @@ const emit = defineEmits<{
     <VCardActions>
       <VSpacer />
 
-      <VBtn
-        size="small"
-        color="surface-variant"
-        variant="text"
-        icon="mdi-pencil"
-        @click="emit('edit', id)"
-      />
+      <VBtn size="small" color="surface-variant" variant="text" icon="mdi-pencil" @click="emit('edit', id)" />
 
-      <VBtn
-        size="small"
-        color="surface-variant"
-        variant="text"
-        icon="mdi-trash-can-outline"
-        @click="emit('delete', id)"
-      />
+      <VBtn size="small" color="surface-variant" variant="text" icon="mdi-trash-can-outline"
+        @click="emit('delete', id)" />
     </VCardActions>
   </VCard>
 </template>

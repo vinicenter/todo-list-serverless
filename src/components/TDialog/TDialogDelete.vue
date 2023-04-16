@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import { ref, reactive } from "vue";
+import { deleteTodolist } from "../../api/todolists";
 
 const props = defineProps<{
-  id: number | undefined;
+  id: string | undefined;
 }>();
 
 const emit = defineEmits<{
   (event: "update:modelValue", modelValue: boolean): void;
+  (event: "success"): void;
 }>();
 
 const loading = ref(false);
@@ -18,34 +20,30 @@ const snackbar = reactive<{
   text: "",
 });
 
-const deleteItem = () => {
+const deleteItem = async () => {
   loading.value = true;
 
-  setTimeout(() => {
-    if (Math.random() > 0.5) {
-      snackbar.text = "Successfully deleted item";
-      snackbar.show = true;
+  try {
+    await deleteTodolist(props.id as string);
 
-      console.log("Deleted item" + props.id);
-      emit("update:modelValue", false);
+    snackbar.text = "Successfully deleted item";
+    snackbar.show = true;
 
-      loading.value = false;
-    } else {
-      snackbar.text = "Error deleting item";
-      snackbar.show = true;
+    emit("update:modelValue", false);
+    emit("success");
 
-      loading.value = false;
-    }
-  }, 1000);
+    loading.value = false;
+  } catch {
+    snackbar.text = "Error deleting item";
+    snackbar.show = true;
+
+    loading.value = false;
+  }
 };
 </script>
 
 <template>
-  <VDialog
-    v-bind="$attrs"
-    width="auto"
-    @update:model-value="emit('update:modelValue', $event)"
-  >
+  <VDialog v-bind="$attrs" width="auto" @update:model-value="emit('update:modelValue', $event)">
     <VCard v-if="id">
       <VCardTitle class="text-h5">
         Do you want to delete this item?
@@ -53,19 +51,10 @@ const deleteItem = () => {
       <VCardText>This will delete the item permanently!</VCardText>
       <VCardActions>
         <VSpacer></VSpacer>
-        <VBtn
-          color="green-darken-1"
-          variant="text"
-          @click="emit('update:modelValue', false)"
-        >
+        <VBtn color="green-darken-1" variant="text" @click="emit('update:modelValue', false)">
           Cancel
         </VBtn>
-        <VBtn
-          color="green-darken-1"
-          :loading="loading"
-          variant="text"
-          @click="deleteItem"
-        >
+        <VBtn color="green-darken-1" :loading="loading" variant="text" @click="deleteItem">
           Delete
         </VBtn>
       </VCardActions>
@@ -73,11 +62,7 @@ const deleteItem = () => {
 
     <VCard v-else>
       <VCardTitle class="text-h5"> Select an item to delete </VCardTitle>
-      <VBtn
-        color="green-darken-1"
-        variant="text"
-        @click="emit('update:modelValue', false)"
-      >
+      <VBtn color="green-darken-1" variant="text" @click="emit('update:modelValue', false)">
         Close
       </VBtn>
     </VCard>
