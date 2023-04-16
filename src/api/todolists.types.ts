@@ -1,6 +1,11 @@
 export namespace todolistsAPI {
+  export interface TodolistPatchPostType {
+    title: string;
+    description: string;
+  }
+
   export interface TodolistType {
-    _id?: string;
+    _id: string;
     title: string;
     description: string;
   }
@@ -19,8 +24,13 @@ export namespace todolistsAPI {
 }
 
 export namespace todolistsMappedAPI {
+  export interface TodolistPatchPostType {
+    title: string;
+    description: string;
+  }
+
   export interface TodolistType {
-    id?: string;
+    id: string;
     title: string;
     description: string;
   }

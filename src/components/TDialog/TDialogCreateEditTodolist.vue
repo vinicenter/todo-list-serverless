@@ -53,8 +53,7 @@ const submitTodolist = async () => {
     loading.value = true;
 
     if (props.id) {
-      await updateTodolist({
-        id: props.id,
+      await updateTodolist(props.id, {
         title: state.title,
         description: state.description
       });

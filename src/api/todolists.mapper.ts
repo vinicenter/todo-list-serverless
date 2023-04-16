@@ -24,9 +24,8 @@ export const todolistMapperFromApi = (response: todolistsAPI.TodolistResponseTyp
   }
 }
 
-export const todolistMapperToApi = (todolist: todolistsMappedAPI.TodolistType): todolistsAPI.TodolistType => {
+export const todolistMapperToApi = (todolist: todolistsMappedAPI.TodolistPatchPostType): todolistsAPI.TodolistPatchPostType => {
   return {
-    _id: todolist.id,
     title: todolist.title,
     description: todolist.description,
   }

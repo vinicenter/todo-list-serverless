@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import TCard from "./components/TCard/TCard.vue";
-import TDialogDelete from "./components/TDialog/TDialogDelete.vue";
+import TDialogDeleteTodolist from "./components/TDialog/TDialogDeleteTodolist.vue";
+import TDialogCreateEditTodolist from "./components/TDialog/TDialogCreateEditTodolist.vue";
 import { getTodolists } from "./api/todolists";
 import { useQuery } from '@tanstack/vue-query'
-import TDialogCreateEdit from "./components/TDialog/TDialogCreateEdit.vue";
 
 const { data, isLoading, refetch } = useQuery({
   queryKey: ['todolists'],
@@ -48,7 +48,7 @@ const runAction = async (action: actionsTypes, id?: string) => {
       </VContainer>
     </VMain>
 
-    <TDialogDelete :id="itemIdSelect" v-model="deleteModalState" @success="refetch" />
-    <TDialogCreateEdit :id="itemIdSelect" v-model="editCreateModalState" @success="refetch" />
+    <TDialogDeleteTodolist :id="itemIdSelect" v-model="deleteModalState" @success="refetch" />
+    <TDialogCreateEditTodolist :id="itemIdSelect" v-model="editCreateModalState" @success="refetch" />
   </VApp>
 </template>

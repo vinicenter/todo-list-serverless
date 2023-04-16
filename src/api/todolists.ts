@@ -13,7 +13,7 @@ export const getTodolist = async (id: string) => {
   return todolistMapperFromApi(data)
 }
 
-export const createTodolist = async (data: { id?: string, title: string, description: string }) => {
+export const createTodolist = async (data: { title: string, description: string }) => {
   const dataToPost = todolistMapperToApi(data)
 
   const { data: response } = await axios.post('/todolists', dataToPost)
@@ -21,10 +21,10 @@ export const createTodolist = async (data: { id?: string, title: string, descrip
   return response
 }
 
-export const updateTodolist = async (data: { id: string, title: string, description: string }) => {
+export const updateTodolist = async (id: string, data: { title: string, description: string }) => {
   const dataToPost = todolistMapperToApi(data)
 
-  const { data: response } = await axios.patch(`/todolists/${data.id}`, dataToPost)
+  const { data: response } = await axios.patch(`/todolists/${id}`, dataToPost)
 
   return response
 }
