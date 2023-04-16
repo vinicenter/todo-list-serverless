@@ -11,7 +11,7 @@ const { data, isLoading, refetch } = useQuery({
   queryFn: getTodolists,
 })
 
-const itemIdSelect = ref<string>('');
+const itemIdSelect = ref<string | undefined>(undefined);
 const editCreateModalState = ref(false);
 const deleteModalState = ref(false);
 
@@ -21,8 +21,11 @@ const runAction = async (action: actionsTypes, id?: string) => {
 
   const options: Record<actionsTypes, Function> = {
     delete: () => (deleteModalState.value = true),
-    create: () => (editCreateModalState.value = true),
     edit: () => (editCreateModalState.value = true),
+    create: () => {
+      itemIdSelect.value = undefined
+      editCreateModalState.value = true
+    },
   };
 
   options[action] ? options[action]() : null;
