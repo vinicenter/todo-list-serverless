@@ -1,9 +1,9 @@
 <script setup lang="ts">
-defineProps<{ id: string }>();
+defineProps<{ id: string | undefined }>();
 
 const emit = defineEmits<{
-  (event: "edit", id: string): void;
-  (event: "delete", id: string): void;
+  (event: "edit", id: string | undefined): void;
+  (event: "delete", id: string | undefined): void;
 }>();
 </script>
 

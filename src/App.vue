@@ -11,13 +11,13 @@ const { data, isLoading, refetch } = useQuery({
   queryFn: getTodolists,
 })
 
-const itemIdSelect = ref<string | undefined>('');
+const itemIdSelect = ref<string>('');
 const editCreateModalState = ref(false);
 const deleteModalState = ref(false);
 
 type actionsTypes = "delete" | "create" | "edit";
 const runAction = async (action: actionsTypes, id?: string) => {
-  itemIdSelect.value = id;
+  if (id) itemIdSelect.value = id;
 
   const options: Record<actionsTypes, Function> = {
     delete: () => (deleteModalState.value = true),
