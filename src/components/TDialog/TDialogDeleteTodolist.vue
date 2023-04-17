@@ -51,10 +51,10 @@ const deleteItem = async () => {
       <VCardText>This will delete the item permanently!</VCardText>
       <VCardActions>
         <VSpacer></VSpacer>
-        <VBtn color="green-darken-1" variant="text" @click="emit('update:modelValue', false)">
+        <VBtn color="primary" variant="text" @click="emit('update:modelValue', false)">
           Cancel
         </VBtn>
-        <VBtn color="green-darken-1" :loading="loading" variant="text" @click="deleteItem">
+        <VBtn color="primary" :loading="loading" variant="text" @click="deleteItem">
           Delete
         </VBtn>
       </VCardActions>
@@ -62,7 +62,7 @@ const deleteItem = async () => {
 
     <VCard v-else>
       <VCardTitle class="text-h5"> Select an item to delete </VCardTitle>
-      <VBtn color="green-darken-1" variant="text" @click="emit('update:modelValue', false)">
+      <VBtn color="primary" variant="text" @click="emit('update:modelValue', false)">
         Close
       </VBtn>
     </VCard>
@@ -72,7 +72,7 @@ const deleteItem = async () => {
     {{ snackbar.text }}
 
     <template v-slot:actions>
-      <VBtn color="pink" variant="text" @click="snackbar.show = false">
+      <VBtn color="primary" variant="text" @click="snackbar.show = false">
         Close
       </VBtn>
     </template>

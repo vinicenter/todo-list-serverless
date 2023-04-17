@@ -102,10 +102,10 @@ const submitTodolist = async () => {
       </VCardText>
       <VCardActions>
         <VSpacer></VSpacer>
-        <VBtn color="green" @click="emit('update:modelValue', false)">
+        <VBtn color="primary" @click="emit('update:modelValue', false)">
           Close
         </VBtn>
-        <VBtn color="green" @click="submitTodolist">
+        <VBtn color="primary" @click="submitTodolist">
           {{ props.id ? 'Edit' : 'Create' }}
         </VBtn>
       </VCardActions>
@@ -116,7 +116,7 @@ const submitTodolist = async () => {
     {{ snackbar.text }}
 
     <template v-slot:actions>
-      <VBtn color="pink" variant="text" @click="snackbar.show = false">
+      <VBtn color="primary" variant="text" @click="snackbar.show = false">
         Close
       </VBtn>
     </template>

@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "frontend:dev": "vite",
+    "frontend:dev": "vite --host",
     "frontend:build": "vue-tsc && vite build",
     "frontend:preview": "vite preview",
     "backend:dev": "wrangler pages dev ./",
