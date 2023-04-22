@@ -2,7 +2,7 @@
 import { watch, useAttrs, reactive, ref } from 'vue';
 import { getTodolist, createTodolist, updateTodolist } from '../../api/todolists';
 
-const props = defineProps<{ id: string | undefined }>();
+const props = defineProps<{ id: string | null }>();
 const emit = defineEmits<{
   (event: "update:modelValue", modelValue: boolean): void;
   (event: "success"): void,

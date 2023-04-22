@@ -3,7 +3,7 @@ import { ref, reactive } from "vue";
 import { deleteTodolist } from "../../api/todolists";
 
 const props = defineProps<{
-  id: string | undefined;
+  id: string | null;
 }>();
 
 const emit = defineEmits<{
