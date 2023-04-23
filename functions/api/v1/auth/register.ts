@@ -1,6 +1,6 @@
 import bcrypt from 'bcryptjs'
-import { mongoInit } from "../utils/mongo-http";
-import jwt from '../utils/jwt'
+import { mongoInit } from "../core/utils/mongo-http";
+import jwt from '../core/utils/jwt'
 import type { RegisterType } from './auth.schemas'
 import { registerSafeParse } from './auth.schemas'
 

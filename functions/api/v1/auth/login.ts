@@ -1,6 +1,6 @@
-import { mongoInit } from "../utils/mongo-http";
+import { mongoInit } from "../core/utils/mongo-http";
+import jwt from '../core/utils/jwt'
 import bcrypt from 'bcryptjs'
-import jwt from '../utils/jwt'
 import type { LoginType } from './auth.schemas'
 import { loginSafeParse } from './auth.schemas'
 

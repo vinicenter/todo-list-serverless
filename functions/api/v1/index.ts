@@ -1,3 +1,3 @@
 export function onRequest(context) {
-  return new Response("available at /api/v1/posts");
+  return new Response("api/v1");
 }

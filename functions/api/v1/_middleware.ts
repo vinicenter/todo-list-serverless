@@ -1,4 +1,4 @@
-import jwt from './utils/jwt'
+import jwt from './core/utils/jwt'
 
 async function errorHandling(context) {
   try {

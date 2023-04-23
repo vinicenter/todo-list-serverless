@@ -1,4 +1,4 @@
-import { mongoInit } from "../utils/mongo-http";
+import { mongoInit } from "../core/utils/mongo-http";
 
 export async function onRequestGet(context) {
   const db = mongoInit(context.env);
