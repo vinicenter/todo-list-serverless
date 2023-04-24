@@ -6,15 +6,11 @@ const config = {
 }
 
 const sign = async (payload: JwtPayload, secret: string | JsonWebKey) => {
-  console.log('payload', { ...payload, ...config })
-
   const token = await jwt.sign({ ...payload, ...config }, secret)
   return token
 }
 
 const verify = async (token: string, secret: string | JsonWebKey, options?: JwtVerifyOptions | JwtAlgorithm) => {
-  console.log('verify', token, secret, options)
-
   const payload = await jwt.verify(token, secret, options)
   return payload
 }
